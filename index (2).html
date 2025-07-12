@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selamat Datang di Toko, Kecantikan Alma</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    header {
+      position: relative;
+    }
+
+    .cart-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .cart-icon img {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+    }
+  </style>
+  <script>
+    function updateCartCount() {
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      let count = keranjang.length;
+      document.getElementById('cart-count').textContent = count;
+      if (count === 0) {
+        document.getElementById('cart-count').style.display = 'none';
+      } else {
+        document.getElementById('cart-count').style.display = 'inline-block';
+      }
+    }
+
+    function tambahKeKeranjang(namaProduk) {
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      keranjang.push(namaProduk);
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+      alert(namaProduk + " ditambahkan ke keranjang!");
+      updateCartCount();
+    }
+
+    window.onload = updateCartCount;
+  </script>
+</head>
+<body>
+  <header>
+    <h1>  Selamat Datang diToko Kecantikan Alma  </h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <!-- Ikon keranjang dengan notifikasi -->
+    <a href="produk.html" class="cart-icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Keranjang">
+      <span id="cart-count" class="cart-count"></span>
+    </a>
+  </header>
+
+  <main>
+    <section class="produk-list">
+      <!-- Produk 1 -->
+      <article class="produk-item">
+        <img src="https://quickimagetools.com/uploads/image_6870b0f05959f8.43404292.png" alt="handbody" />
+        <h2>handbody scarlet</h2>
+        <p>Rp 89.900</p>
+        <p>Untuk perawatan dan Mencerahkan Kulit seketika.</p></p>
+        <button onclick="tambahKeKeranjang('Produk 1')">
+          🛒 Tambah ke Keranjang
+        </button>
+      </article>
+
+      <!-- Produk 2 -->
+      <article class="produk-item">
+        <img src="https://quickimagetools.com/uploads/image_6870b19d518428.52360505.jpg" alt="eyeliner" />
+        <h2>eyeliner ESQA</h2>
+        <p>Rp 200.000</p>
+        <p>Membuat matamu terlihat menawan dan dapat membuat mata anda anti silau.</p>
+        <button onclick="tambahKeKeranjang('Produk 2')">
+          🛒 Tambah ke Keranjang
+        </button>
+      </article>
+
+      <!-- Produk 3 -->
+      <article class="produk-item">
+        <img src="https://quickimagetools.com/uploads/image_6870b1c0b46d04.58683086.png" alt="lipstick" />
+        <h2>lipstick shinesation</h2>
+        <p>Rp 334.900</p>
+        <p>Memerahkan bibir anda dan keliatan berkilau aman untuk digunakan saat makan karna tidak akan menempel.</p>
+        <button onclick="tambahKeKeranjang('Produk 3')">
+          🛒 Tambah ke Keranjang
+        </button>
+      </article>
+
+      <!-- Produk 4 -->
+      <article class="produk-item">
+        <img src="https://quickimagetools.com/uploads/image_6870b1dfc6bd15.94820021.jpg" alt="eyeshadow" />
+        <h2>eyeshadow saniye paket bundle</h2>
+        <p>Rp 200.000</p>
+        <p>eyeshadow yang akan luntur bahkan ketika saat sedang berwudhu.</p>
+        <button onclick="tambahKeKeranjang('Produk 4')">
+          🛒 Tambah ke Keranjang
+        </button>
+      </article>
+
+      <!-- Produk 5 -->
+      <article class="produk-item">
+        <img src="https://quickimagetools.com/uploads/image_6870b1f97a16e6.88749610.jpg" alt="Bedak" />
+        <h2>bedak OMG! </h2>
+        <p>Rp 55.000</p>
+        <p>Bedak yang tidak akan nempel ke benda apapun dan luntur juga terkena sesuatu!.</p>
+        <button onclick="tambahKeKeranjang('Produk 5')">
+          🛒 Tambah ke Keranjang
+        </button>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Kontak: almahebat@tokocantik.com | 0812-3456-7890</p>
+  </footer>
+</body>
+</html>
